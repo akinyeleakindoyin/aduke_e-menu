@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&family=Montserrat:wght@600;700;900&family=Open+Sans:wght@700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply bg-[#000000] tracking-wide;
+  }
+
+  h1 {
+    @apply text-4xl xs:text-xl;
+  }
+
+  hr {
+    @apply w-[100%]  mt-2 rounded-full;
+  }
+  button {
+    @apply p-2 font-bold rounded-xl uppercase  hover:scale-105 ease-in duration-300;
+  }
+}
+
+h1 {
+  font-family: 'open sans', sans-serif;
+  /* font-size: 60px; */
+  font-weight: 800;
+  /* line-height: 1.5; */
+  /* word-spacing: 1; */
+  color: #000;
+  /* -webkit-text-stroke-width: 0.1px; */
+  /* -webkit-text-stroke-color: #fff; */
+}
+
+p {
+  font-family: 'leauge spartan', sans-serif;
+  color: #fff;
+}
+
+h2 {
+  font-family: 'montserrat', sans-serif;
+  color: #e89e30;
+}
+
+hr {
+  border-top: 3px solid #e89e30;
+}
+
+.marquee,
+.marquee-vertical {
+  position: relative;
+  /* height: 400px;
+  width: 100%; */
+  overflow-x: hidden;
+}
+
+.maylike-products-container {
+  display: flex;
+  justify-content: center;
+  /* gap: 15px; */
+  /* margin-top: 20px; */
+}
+
+.track-horizontal {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 15s linear infinite;
+  width: 100%;
+}
+.track-horizontal:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.track-vertical {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 15s linear infinite;
+  width: 180%;
+}
+.track-vertical:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
