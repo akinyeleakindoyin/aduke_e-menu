@@ -3,15 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '../lib/client';
 
-const MenuItems = ({
-  name,
-  price,
-  image,
-  details,
-  category,
-  available,
-  slug,
-}) => {
+const MenuItems = ({ name, price, details, category }) => {
   return (
     <div>
       <ul className=''>
