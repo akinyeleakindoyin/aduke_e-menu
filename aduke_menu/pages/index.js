@@ -6,7 +6,7 @@ import { IoIosCall } from 'react-icons/io';
 import toast, { Toaster } from 'react-hot-toast';
 
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 import { MenuItems } from '../components';
 import Head from 'next/head';
