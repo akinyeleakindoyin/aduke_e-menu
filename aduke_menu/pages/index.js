@@ -5,7 +5,6 @@ import { AiOutlineInstagram, AiOutlineHome } from 'react-icons/ai';
 import { IoIosCall } from 'react-icons/io';
 import toast, { Toaster } from 'react-hot-toast';
 
-// import { BiArrowBack } from './react-icons/bi';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -15,9 +14,6 @@ import { Banner, Menu, Footer } from '../components';
 
 import { client } from '../lib/client';
 import { urlFor } from '../lib/client';
-
-// const API_URL =
-//   'https://q3y9sg8y.api.sanity.io/v2022-09-11/data/query/production?';
 
 const Home = ({
   maincourse,
@@ -50,12 +46,7 @@ const Home = ({
           drinksData,
           sideDishesData
         )
-        .filter(
-          (item, index) => item.name.toLowerCase().includes(searchMenu)
-
-          // ||
-          // item.details.toLowerCase().includes(searchMenu)
-        );
+        .filter((item, index) => item.name.toLowerCase().includes(searchMenu));
       setSearchMenu('');
       setMenuItem(searchedMenu);
     }
@@ -66,42 +57,15 @@ const Home = ({
     setToggleDisplay(!toggleDisplay);
   };
 
-  // useEffect(() => {
-  //   const handleToggleDisplay = () => {
-  //     setToggleDisplay((prevToggleDisplay) => {
-  //       if (!prevToggleDisplay) {
-  //         document.getElementById('searchDisplay').classList.remove('hidden');
-  //         document.getElementById('searchDisplay').classList.add('hidden');
-  //       } else {
-  //         document.getElementById('searchDisplay').classList.add('hidden');
-  //         document.getElementById('searchDisplay').classList.remove('hidden');
-  //       }
-  //     });
-  //   };
-  // }, []
-  // );
-  // const searchIcon = document.getElementById('searchIcon');
-  // const menuListings = document.getElementById('menu--list');
-
-  // const addAndRemove = () => {
-  //   menuListings.classList.add('hidden');
-  // };
-
   useEffect(() => {
-    //   window.addEventListener('r');
-    // document
-    //   .getElementById('searchIcon')
-    //   .addEventListener('click', handleSearch(maincourse));
-
     handleSearch('jollof combo');
-    // if (!toggleDisplay) {
-    //   document.getElementById('menu--list').classList.remove('hidden');
-    // }
 
-    // document.getElementById('home').addEventListener('click', function () {
-    //   document.getElementById('menu--list').classList.remove('hidden');
-    //   document.getElementById('searchDisplay').classList.add('hidden');
-    // });
+    const toToggle = document.getElementById('home');
+    toToggle.addEventListener('click', function () {
+      document.getElementById('menu--list').classList.remove('hidden');
+      document.getElementById('searchDisplay').classList.add('hidden');
+    });
+
     if (menuItem?.length > 0) {
       document.getElementById('menu--list').classList.add('hidden');
       document.getElementById('searchDisplay').classList.remove('hidden');
@@ -111,57 +75,7 @@ const Home = ({
 
       toast.error('Sorry! We do not have that on menu today 😥');
     }
-
-    // console.log('not on menu');
-    // document.getElementById('menu--list').classList.add('hidden');
-    // document.getElementById('searchDisplay').classList.remove('hidden');
-    // setTimeout(() => {
-    //   document.getElementById('menu--list').classList.remove('hidden');
-    //   document.getElementById('searchDisplay').classList.add('hidden');
-    //   setMenuItem('');
-    // }, 2000);
-    // }
-
-    // var input = document.getElementById('searchInput');
-
-    // input.addEventListener('keyup', function (event) {
-    //   event.preventDefault();
-    //   if (event.key === 'Enter') {
-    //     // Cancel the default action, if needed
-    //     // Trigger the button element with a click
-    //     handleSearch();
-    //   }
-    // });
-
-    // else if (window.location.reload()) {
-    //   document.getElementById('searchDisplay').classList.add('hidden');}
   }, [menuItem]);
-  // const [available, setAvailable] = useState(true);
-  const toToggle = document.getElementById('home');
-  toToggle.addEventListener('click', function () {
-    document.getElementById('menu--list').classList.remove('hidden');
-    document.getElementById('searchDisplay').classList.add('hidden');
-  });
-  // To make enter submit search query
-
-  // useEffect(() => {
-  //   const keyDownHandler = (event) => {
-  //     console.log('User pressed: ', event.key);
-
-  //     if (event.key === 'Enter') {
-  //       event.preventDefault();
-
-  //       // 👇️ call submit function here
-
-  //     }
-  //   };
-
-  //   document.addEventListener('keydown', keyDownHandler);
-
-  //   return () => {
-  //     document.removeEventListener('keydown', keyDownHandler);
-  //   };
-  // }, []);
 
   const handleMenu = () => {
     setMenuList(!menuList);
@@ -172,10 +86,9 @@ const Home = ({
       <div>
         <div className='bg-[#e89e30] w-full h-screen relative'>
           <div>
-            {/* <Link href='#menu'> */}
             <div
               id='home'
-              className='flex flex-col items-center gap-4 fixed xs:left-2 sm:left-3 md:left-7 lg:left-7 top-[30%] cursor-pointer text-[#000] p-1 bg-black/20  shadow-gray-400 shadow-sm'
+              className='flex flex-col items-center gap-4 fixed xs:left-2 sm:left-5 md:left-6 lg:left-6 top-[30%] cursor-pointer text-[#000] p-1 bg-black/20  shadow-gray-400 shadow-sm'
             >
               <AiOutlineHome
                 id='home'
@@ -183,19 +96,35 @@ const Home = ({
                 size={20}
               />
             </div>
-            {/* </Link> */}
-            <div className=' flex flex-col items-center gap-4 fixed xs:left-2 sm:left-4 md:left-8 lg:left-8 top-[50%] cursor-pointer'>
+            <div className=' flex flex-col items-center gap-4 fixed xs:left-2 sm:left-5 md:left-6 lg:left-6 top-[50%] cursor-pointer'>
               <div className='text-[#000] shadow-gray-700 shadow-sm p-1'>
-                <FaFacebookF size={20} />
+                <Link
+                  href='https://www.facebook.com/adukescuisine/'
+                  target='_blank'
+                >
+                  <FaFacebookF size={20} />
+                </Link>
               </div>
               <div className='text-[#000]  shadow-gray-700 shadow-sm p-1'>
-                <FaTiktok size={20} />
+                <Link
+                  href='https://www.tiktok.com/@adukecuisine'
+                  target='_blank'
+                >
+                  <FaTiktok size={20} />
+                </Link>
               </div>
               <div className='text-[#000]  shadow-gray-700 shadow-sm p-1'>
-                <AiOutlineInstagram size={20} />
+                <Link
+                  href='https://www.instagram.com/adukecuisine/?hl=en'
+                  target='_blank'
+                >
+                  <AiOutlineInstagram size={20} />
+                </Link>
               </div>
               <div className='text-[#000]  shadow-gray-700 shadow-sm p-1'>
-                <IoIosCall size={20} />
+                <Link href='tel:1213-261-0737'>
+                  <IoIosCall size={20} />
+                </Link>
               </div>
             </div>
           </div>
@@ -206,7 +135,7 @@ const Home = ({
             <div className='bg-[#000] h-screen overflow-y-scroll overflow-x-hidden px-10 relative'>
               <div>
                 <div>
-                  <div className='flex xs:flex-col items-center justify-center mt-4 gap-3 xs:gap-3 lg:justify-around md:justify-around'>
+                  <div className='flex xs:flex-col items-center justify-center mt-4 gap-3 sm:justify-around xs:gap-3 lg:justify-around md:justify-around'>
                     {/* <div className='justify-start'> */}
                     <div className='relative'>
                       <input
@@ -243,10 +172,7 @@ const Home = ({
               </div>
 
               {/* Display Search Result section */}
-              <div
-                id='searchDisplay'
-                // className={!toggleDisplay ? '' : 'hidden'}
-              >
+              <div id='searchDisplay'>
                 <div>
                   <div>
                     <div className='ml-20 sm:ml-6 xs:mx-2 mt-10 lg:mx-20 md:mx-10 sm:mx-10'>
@@ -255,19 +181,6 @@ const Home = ({
                         <h2 className='text-[#e89e30] uppercase text-sm md:text-xl lg:text-[24px]'>
                           Search Results
                         </h2>
-
-                        {/* <BiArrowBack
-                      onClick={handleToggleDisplay}
-                      className='text-[#e89e30]'
-                    /> */}
-                        {/* <div>
-                      <a
-                        className='text-xs inline text-[#fff] underline cursor-pointer'
-                        onClick={handleToggleDisplay}
-                      >
-                        <span>Go back to menu</span>
-                      </a>
-                    </div> */}
                       </div>
                       <hr />
                       {menuItem?.length > 0 ? (
@@ -279,6 +192,7 @@ const Home = ({
                               name={list.name}
                               price={list.price}
                               details={list.details}
+                              category={list.category}
                             />
                           ))}
                         </div>
@@ -292,16 +206,16 @@ const Home = ({
                 </div>
               </div>
               {/* Menu List section */}
-              {/* <Link href='#menu'> */}
 
               {/* this div controls the display on medium and large devices */}
+
               <div className='lg:mx-10'>
                 <div id='menu--list'>
                   <div className='lg:px-20 md:px-10'>
                     <div className=' sm:ml-6 mt-10 '>
                       <div className='flex flex-col xs:w-[100%]'>
                         <div>
-                          <h2 className='text-[#e89e30] uppercase text-sm md:text-[16px] lg:text-[24px] '>
+                          <h2 className='text-[#e89e30] uppercase text-sm md:text-[20px] lg:text-[24px] '>
                             {`${
                               !menuList ? '' : 'Vegan '
                             }Appetizers and snacks`}
@@ -448,78 +362,9 @@ const Home = ({
                       </div>
 
                       {/* second column for lg devices */}
-
-                      {/* <div className='xs:hidden sm:hidden md:hidde lg:w-[50%]'>
-                        <div className=''>
-                          <div className=''>
-                            <h2 className='text-[#e89e30] uppercase text-sm md:text-xl'>
-                              {`${!menuList ? '' : 'Vegan '} Maincourse Meal`}
-                            </h2>
-                            <hr />
-                            <div className='mt-4'>
-                              {!menuList
-                                ? maincourse?.map((item) => (
-                                    <MenuItems
-                                      key={item._id}
-                                      image={item.image}
-                                      name={item.name}
-                                      price={item.price}
-                                      details={item.details}
-                                    />
-                                  ))
-                                : veganMainData.map((item) => (
-                                    <MenuItems
-                                      key={item._id}
-                                      image={item.image}
-                                      name={item.name}
-                                      price={item.price}
-                                      details={item.details}
-                                    />
-                                  ))}
-                            </div>
-
-                            <div className={!menuList ? '' : 'hidden'}>
-                              <h2 className='text-[#e89e30] uppercase text-sm md:text-xl mt-6'>
-                                Lagos Specials
-                              </h2>
-                              <hr />
-                              <div className='mt-4'>
-                                {lagosSpecialData?.map((item) => (
-                                  <MenuItems
-                                    key={item._id}
-                                    image={item.image}
-                                    name={item.name}
-                                    price={item.price}
-                                    details={item.details}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-
-                            <div className={!menuList ? '' : 'hidden'}>
-                              <h2 className='text-[#e89e30] uppercase text-sm md:text-xl mt-6'>
-                                Special Orders
-                              </h2>
-                              <hr />
-                              <div className='mt-4'>
-                                {specialOrderData?.map((item) => (
-                                  <MenuItems
-                                    key={item._id}
-                                    image={item.image}
-                                    name={item.name}
-                                    price={item.price}
-                                    details={item.details}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div> */}
                     </div>
                   </div>
                 </div>
-                {/* </Link> */}
               </div>
             </div>
           </div>
